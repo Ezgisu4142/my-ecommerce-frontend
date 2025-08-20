@@ -1,38 +1,39 @@
 import React, { useState } from "react";
 
 function Login() {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
-    alert(`Kullanıcı: ${username}, Şifre: ${password}`);
+    alert(`Giriş yapıldı: ${email}`);
   };
 
   return (
-    <div style={{ maxWidth: "400px", margin: "50px auto" }}>
-      <h2>Giriş Yap</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Kullanıcı Adı:</label>
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            style={{ width: "100%", padding: "8px", margin: "5px 0" }}
-          />
-        </div>
-        <div>
-          <label>Şifre:</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            style={{ width: "100%", padding: "8px", margin: "5px 0" }}
-          />
-        </div>
-        <button type="submit" style={{ padding: "10px 20px", marginTop: "10px" }}>
-          Giriş
+    <div className="flex justify-center items-center h-screen bg-pink-50">
+      <form
+        onSubmit={handleLogin}
+        className="bg-white p-8 rounded shadow-md w-80"
+      >
+        <h2 className="text-2xl font-bold mb-4 text-center">Login</h2>
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          className="w-full border p-2 mb-4 rounded"
+          required
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          className="w-full border p-2 mb-4 rounded"
+          required
+        />
+        <button className="w-full bg-pink-400 text-white p-2 rounded hover:bg-pink-500 transition">
+          Giriş Yap
         </button>
       </form>
     </div>
