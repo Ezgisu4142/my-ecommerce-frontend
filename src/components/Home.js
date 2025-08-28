@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
+import { useSearchParams } from "react-router-dom";
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import Rating from "./Rating";
 
 const products = [
@@ -18,26 +20,61 @@ const products = [
 ];
 
 function Home() {
+  const [searchParams] = useSearchParams();
+  const query = (searchParams.get("q") || "").toLowerCase();
+  const filteredProducts = query
+    ? products.filter((p) => p.name.toLowerCase().includes(query))
+    : products;
+  const [favoriteIds, setFavoriteIds] = useState(new Set());
+
+  const toggleFavorite = (id) => {
+    setFavoriteIds((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id); else next.add(id);
+      return next;
+    });
+  };
+
   return (
     <Container className="my-4">
-      <h1 className="text-center mb-4">🛍️ Makeup Store</h1>
+      <h1 className="text-center mb-4 hero-title">✨ 🛍️ Makeup Store 💄 ✨</h1>
       <Row>
-        {products.map((p) => (
-          <Col key={p.id} sm={12} md={6} lg={4} className="mb-4">
-            <Card className="h-100">
-              <Card.Img variant="top" src={p.img} />
+        {filteredProducts.map((p) => (
+          <Col key={p.id} sm={12} md={6} lg={3} className="mb-4">
+            <Card className="h-100 product-hover">
+              <Card.Img variant="top" src={p.img} className="product-img" />
               <Card.Body className="d-flex flex-column">
+                <div className="d-flex justify-content-end mb-2">
+                  <Button
+                    variant="link"
+                    className="p-0"
+                    title="Favori"
+                    aria-label="Favori"
+                    onClick={() => toggleFavorite(p.id)}
+                  >
+                    {favoriteIds.has(p.id) ? (
+                      <AiFillHeart size={22} color="#f21abc" />
+                    ) : (
+                      <AiOutlineHeart size={22} color="#111" />
+                    )}
+                  </Button>
+                </div>
                 <Card.Title>{p.name}</Card.Title>
                 <Card.Text>Fiyat: {p.price}₺</Card.Text>
                 <Rating value={p.rating} count={p.reviews} />
                 <div className="mt-auto d-flex gap-2">
-                  <Button className="pink-btn">Sepete Ekle</Button>
+                  <Button className="pink-btn pink-btn-lg w-100">Sepete Ekle</Button>
                 </div>
 
               </Card.Body>
             </Card>
           </Col>
         ))}
+        {!filteredProducts.length && (
+          <Col>
+            <div className="text-center text-muted py-5">Aradığınız kriterlere uygun ürün bulunamadı.</div>
+          </Col>
+        )}
       </Row>
     </Container>
   );

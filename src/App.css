@@ -28,6 +28,38 @@
   color: #ffffff !important;
 }
 
+/* Product image smaller, no crop */
+.product-img {
+  height: 220px;
+  object-fit: contain;
+  background: #fff;
+  width: 100%;
+  display: block;
+}
+
+/* Larger add-to-cart button */
+.pink-btn-lg {
+  padding: 12px 16px;
+  font-size: 1rem;
+  border-radius: 8px;
+}
+
+/* Hover grow effect for product cards */
+.product-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  overflow: hidden;
+  border-radius: 0.5rem;
+}
+
+.product-hover:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+}
+
+.product-hover:hover .product-img {
+  transform: scale(1.05);
+}
+
 .rating {
   display: inline-flex;
   align-items: center;
@@ -45,6 +77,26 @@
 
 .rating-count {
   font-weight: 600;
+}
+
+/* (reverted custom product card styles) */
+
+/* Hero title styling */
+.hero-title {
+  font-weight: 800;
+  font-size: clamp(2rem, 3vw + 1rem, 3rem);
+  color: #f21abc;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 8px rgba(242, 26, 188, 0.15);
+  transition: text-shadow 0.2s ease;
+}
+
+.hero-title:hover { text-shadow: 0 4px 12px rgba(242, 26, 188, 0.25); }
+
+/* removed heavy shine animations for consistent readability */
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-title { animation: none; }
 }
 
 /* Login page */
