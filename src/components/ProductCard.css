@@ -1,0 +1,13 @@
+.pink-btn {
+  background-color: #f21abc !important; /* Bootstrap’i ezmek için */
+  color: white !important;
+  border: none !important;
+  padding: 8px 12px !important;
+  border-radius: 5px !important;
+  cursor: pointer !important;
+  transition: background-color 0.3s ease !important;
+}
+
+.pink-btn:hover {
+  background-color: #d819a3 !important;
+}

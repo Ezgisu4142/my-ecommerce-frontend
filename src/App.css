@@ -1,38 +1,64 @@
-.App {
-  text-align: center;
+.pink-btn {
+  background-color: #f21abc !important;
+  color: white !important;
+  border: none !important;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.pink-btn:hover {
+  background-color: #d819a3 !important;
+  color: white !important;
+  border: none !important;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.like-btn {
+  background-color: transparent !important;
+  color: #f21abc !important;
+  border: 2px solid #f21abc !important;
+  padding: 6px 10px;
+  border-radius: 5px;
+  line-height: 1;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+.like-btn:hover {
+  background-color: #f21abc !important;
+  color: #ffffff !important;
+}
+
+.rating {
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 6px;
 }
 
-.App-link {
-  color: #61dafb;
+.rating-star {
+  font-size: 18px;
+  color: #ddd;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.rating-star.filled {
+  color: #000000;
+}
+
+.rating-count {
+  font-weight: 600;
+}
+
+/* Login page */
+.login-page {
+  min-height: calc(100vh - 120px);
+  display: flex;
+  align-items: center;
+  padding: 60px 0;
+  background: linear-gradient(rgba(255, 241, 248, 0.75), rgba(255, 241, 248, 0.75)),
+    url('https://media.istockphoto.com/id/1216648318/photo/cosmetics-background-top-view-makeup-brushes-and-cosmetics-on-a-pink-background-professional.jpg?s=170667a&w=0&k=20&c=d76RHHgzmYFQG3AvuLK444cxny4zPnf1lIvL6s7_G7M=') center/cover no-repeat fixed;
+}
+
+.login-card {
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }

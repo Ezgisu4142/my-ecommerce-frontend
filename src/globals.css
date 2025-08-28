@@ -1,0 +1,11 @@
+/* app/globals.css */
+.btn-pink {
+  background-color: #ff69b4; /* HotPink */
+  border-color: #ff69b4;
+  color: white;
+}
+
+.btn-pink:hover {
+  background-color: #ff1493; /* DeepPink */
+  border-color: #ff1493;
+}
